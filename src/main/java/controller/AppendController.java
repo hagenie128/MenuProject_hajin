@@ -29,7 +29,7 @@ public class AppendController implements Controller {
             boolean flag = MenuService.getInstance().appendMenu(
                     new MenuVO(menuNo, name, price, category, isAvailable));
 
-            System.out.println(flag ? "사원정보 등록 성공" : "사원정보 등록 실패");
+            System.out.println(flag ? "메뉴정보 등록 성공" : "메뉴정보 등록 실패");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
