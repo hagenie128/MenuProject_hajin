@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class SelectController implements Controller {
     @Override
     public void execute(Scanner sc) {
-        System.out.println("사원 정보 검색을 시작합니다.....");
-        System.out.print("검색할 사원명 일부 : ");
+        System.out.println("메뉴 정보 검색을 시작합니다.....");
+        System.out.print("검색할 메뉴명 일부 : ");
         String name = sc.nextLine();
 
         try {
