@@ -47,10 +47,9 @@ public class MenuService {
     }
 
     public void exportToCSV() {
-        try {
-            FileWriter fw = new FileWriter("menu.csv");
-            PrintWriter pw = new PrintWriter(fw);
-            pw.println("menuNo,menuName, price, category, isAvailable");
+        try (FileWriter fw = new FileWriter("menu.csv");
+             PrintWriter pw = new PrintWriter(fw)) {
+            pw.println("menuNo,name, price, category, isAvailable");
             list.forEach(item -> pw.println(item));
             System.out.println("전체 메뉴 정보 저장 완료");
         } catch (IOException e) {
@@ -59,18 +58,25 @@ public class MenuService {
     }
 
 
-    public void checkDuplicateEmployeeId(String id) {
+    public void checkDuplicateMenuId(String id) throws MenuException {
         int idx = list.indexOf(new MenuVO(id, null, 0, null, false));
         if (idx != -1)
             throw new MenuException("이미 존재하는 메뉴번호입니다.");
     }
 
-    public boolean appendEmployee(MenuVO menuVO) {
+    public boolean appendMenu(MenuVO menuVO) {
         return list.add(menuVO);
     }
 
-    public void deleteMenu(String menuNo) {
-        if(!list.remove(new MenuVO(menuNo, null, 0, null, false)))
+    public void deleteMenu(String menuNo) throws MenuException {
+        if (!list.remove(new MenuVO(menuNo, null, 0, null, false)))
             throw new MenuException("존재하지 않는 메뉴번호입니다.");
+    }
+
+    public MenuVO searchMenuId(String menuNo) throws MenuException {
+        int idx = list.indexOf(new MenuVO(menuNo, null, 0, null, false));
+        if (idx == -1)
+            throw new MenuException("존재하지 않는 메뉴번호입니다.");
+        return list.get(idx);
     }
 }

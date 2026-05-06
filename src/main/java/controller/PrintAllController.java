@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class PrintAllController implements Controller {
     @Override
     public void execute(Scanner sc) {
-            System.out.println("전체 메뉴 정보를 출력합니다");
+        System.out.println("전체 메뉴 정보를 출력합니다");
         ArrayList<MenuVO> list = MenuService.getInstance().getList();
 
-        for (MenuVO vo :list){
+        for (MenuVO vo : list) {
             System.out.println(vo);
         }
     }

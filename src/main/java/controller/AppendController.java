@@ -14,23 +14,24 @@ public class AppendController implements Controller {
 
         try {
             //중복체크
-            MenuService.getInstance().checkDuplicateEmployeeId(menuNo);
+            MenuService.getInstance().checkDuplicateMenuId(menuNo);
 
             System.out.println("등록할 메뉴명 : ");
             String name = sc.nextLine();
             System.out.println("메뉴 가격 : ");
-            int price = sc.nextInt();sc.nextLine();
+            int price = sc.nextInt();
+            sc.nextLine();
             System.out.println("메뉴 카테고리 : ");
             String category = sc.nextLine();
             System.out.println("판매 여부 : ");
             boolean isAvailable = sc.nextBoolean();
 
-            boolean flag =  MenuService.getInstance().appendEmployee(
-                    new MenuVO(menuNo,name,price,category,isAvailable));
+            boolean flag = MenuService.getInstance().appendMenu(
+                    new MenuVO(menuNo, name, price, category, isAvailable));
 
             System.out.println(flag ? "사원정보 등록 성공" : "사원정보 등록 실패");
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

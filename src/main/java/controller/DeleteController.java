@@ -16,7 +16,7 @@ public class DeleteController implements Controller {
         try {
             MenuService.getInstance().deleteMenu(menuNo);
             System.out.println("메뉴정보 삭제 성공");
-        }catch (MenuException e) {
+        } catch (MenuException e) {
             System.out.println(e.getMessage());
         }
     }
