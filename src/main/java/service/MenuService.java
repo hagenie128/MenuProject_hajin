@@ -79,4 +79,15 @@ public class MenuService {
             throw new MenuException("존재하지 않는 메뉴번호입니다.");
         return list.get(idx);
     }
+
+    public ArrayList<MenuVO> searchForNameMenu(String name) throws MenuException {
+        ArrayList<MenuVO> result = new ArrayList<MenuVO>();
+        for (MenuVO vo : list) {
+            if (vo.getName().indexOf(name) != -1)//검색 결과가 있으면 result에 추가
+                result.add(vo);
+        }
+        if (result.isEmpty())
+            throw new MenuException("검색 결과가 없습니다");
+        return result;
+    }
 }

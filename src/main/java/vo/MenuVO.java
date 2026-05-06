@@ -59,7 +59,7 @@ public class MenuVO {
 
     @Override
     public String toString() {
-        return menuNo + ","+ name +","+ price + "," + category + "," + isAvailable;
+        return menuNo + "," + name + "," + price + "," + category + "," + isAvailable;
     }
 
     @Override

@@ -33,7 +33,7 @@ public class MenuMain {
                     break;
                 }
             }
-        }finally {
+        } finally {
             MenuService.getInstance().exportToCSV();
         }
     }
